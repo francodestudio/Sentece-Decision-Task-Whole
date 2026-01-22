@@ -1,10 +1,10 @@
-﻿/***************************** 
- * Sentencedecisiontask *
- *****************************/
+﻿/********************************** 
+ * Sentencedecisiontaskwhole *
+ **********************************/
 
 
 // store info about the experiment session:
-let expName = 'SentenceDecisionTask';  // from the Builder filename that created this script
+let expName = 'SentenceDecisionTaskWhole';  // from the Builder filename that created this script
 let expInfo = {
     'participant_id': `${util.pad(Number.parseFloat(util.randint(0, 999999)).toFixed(0), 6)}`,
     'tf_mapping': ["TrueFalse", "FalseTrue"],
