@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 22, 2026, at 15:00
+    on January 23, 2026, at 08:46
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -46,7 +46,7 @@ deviceManager = hardware.DeviceManager()
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
 psychopyVersion = '2025.1.1'
-expName = 'SentenceDecisionTask'  # from the Builder filename that created this script
+expName = 'SentenceDecisionTaskWhole'  # from the Builder filename that created this script
 expVersion = 'v2'
 # a list of functions to run when the experiment ends (starts off blank)
 runAtExit = []
@@ -391,7 +391,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         
     dynamic_text = f"""Sentence Judgement Task.
     \n\nYou will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.
-    \nEach sentence will be presented to you one word at a time,followed by a fixation cross.
+    \nsentences will be presented you,followed by a fixation cross.
     \nFor each sentence,you must indicate
     \n{left}(left mouse click) if the sentence could be a literally true fact.For example, \"The funny sound was his snore\" is a statement that could be literally true;or
     \n{right}(right mouse click) if the sentence could not be a literally true fact.For example, \"The desert storm was a carrot\" could never be true.
@@ -411,7 +411,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         depth=-2.0);
     StartKeyboard = keyboard.Keyboard(deviceName='StartKeyboard')
     
-    # --- Initialize components for Routine "RSVP" ---
+    # --- Initialize components for Routine "Stims" ---
     StimuliText = visual.TextStim(win=win, name='StimuliText',
         text='',
         font='Arial',
@@ -716,13 +716,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 for paramName in thisTrialLoop:
                     globals()[paramName] = thisTrialLoop[paramName]
             
-            # --- Prepare to start Routine "RSVP" ---
-            # create an object to store info about Routine RSVP
-            RSVP = data.Routine(
-                name='RSVP',
+            # --- Prepare to start Routine "Stims" ---
+            # create an object to store info about Routine Stims
+            Stims = data.Routine(
+                name='Stims',
                 components=[StimuliText, earlyMouseClick, LeftResponseInstruction, rightResponseInstruction, validResponseMouseClick, responsefixationCrossDisplay],
             )
-            RSVP.status = NOT_STARTED
+            Stims.status = NOT_STARTED
             continueRoutine = True
             # update component parameters for each repeat
             StimuliText.setText(Stimuli
@@ -748,15 +748,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             
             
             
-            # store start times for RSVP
-            RSVP.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-            RSVP.tStart = globalClock.getTime(format='float')
-            RSVP.status = STARTED
-            thisExp.addData('RSVP.started', RSVP.tStart)
-            RSVP.maxDuration = None
+            # store start times for Stims
+            Stims.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+            Stims.tStart = globalClock.getTime(format='float')
+            Stims.status = STARTED
+            thisExp.addData('Stims.started', Stims.tStart)
+            Stims.maxDuration = None
             # keep track of which components have finished
-            RSVPComponents = RSVP.components
-            for thisComponent in RSVP.components:
+            StimsComponents = Stims.components
+            for thisComponent in Stims.components:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
                 thisComponent.tStartRefresh = None
@@ -768,8 +768,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             _timeToFirstFrame = win.getFutureFlipTime(clock="now")
             frameN = -1
             
-            # --- Run Routine "RSVP" ---
-            RSVP.forceEnded = routineForceEnded = not continueRoutine
+            # --- Run Routine "Stims" ---
+            Stims.forceEnded = routineForceEnded = not continueRoutine
             while continueRoutine and routineTimer.getTime() < 4.5:
                 # if trial has changed, end Routine now
                 if hasattr(thisTrialLoop, 'status') and thisTrialLoop.status == STOPPING:
@@ -973,7 +973,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     validButtons= validResponseMouseClick.getPressed()
                     if (validButtons[0] or validButtons[2]):
                         validClick = True
-                        valid_response_time = validResponseMouseClick.mouseClock.getTime() - 3.0
+                        valid_response_time = validResponseMouseClick.mouseClock.getTime() - 1.5
                         if validButtons[0]: 
                             valid_resp = left
                             valid_mouse_response = 'left'
@@ -996,17 +996,17 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         thisExp=thisExp, 
                         win=win, 
                         timers=[routineTimer, globalClock], 
-                        currentRoutine=RSVP,
+                        currentRoutine=Stims,
                     )
                     # skip the frame we paused on
                     continue
                 
                 # check if all components have finished
                 if not continueRoutine:  # a component has requested a forced-end of Routine
-                    RSVP.forceEnded = routineForceEnded = True
+                    Stims.forceEnded = routineForceEnded = True
                     break
                 continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in RSVP.components:
+                for thisComponent in Stims.components:
                     if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                         continueRoutine = True
                         break  # at least one component has not yet finished
@@ -1015,14 +1015,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                     win.flip()
             
-            # --- Ending Routine "RSVP" ---
-            for thisComponent in RSVP.components:
+            # --- Ending Routine "Stims" ---
+            for thisComponent in Stims.components:
                 if hasattr(thisComponent, "setAutoDraw"):
                     thisComponent.setAutoDraw(False)
-            # store stop times for RSVP
-            RSVP.tStop = globalClock.getTime(format='float')
-            RSVP.tStopRefresh = tThisFlipGlobal
-            thisExp.addData('RSVP.stopped', RSVP.tStop)
+            # store stop times for Stims
+            Stims.tStop = globalClock.getTime(format='float')
+            Stims.tStopRefresh = tThisFlipGlobal
+            thisExp.addData('Stims.stopped', Stims.tStop)
             # store data for trialLoop (TrialHandler)
             # Run 'End Routine' code from storeEarlyMouseClick
             correctStr = "True" if correct_answer else "False"
@@ -1052,10 +1052,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('valid_accuracy', valid_corr)
             validResponseMouseClick.mouseClock.reset()
             responsefixationCrossDisplay.setColor('black')
+            print(valid_response_time)
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-            if RSVP.maxDurationReached:
-                routineTimer.addTime(-RSVP.maxDuration)
-            elif RSVP.forceEnded:
+            if Stims.maxDurationReached:
+                routineTimer.addTime(-Stims.maxDuration)
+            elif Stims.forceEnded:
                 routineTimer.reset()
             else:
                 routineTimer.addTime(-4.500000)

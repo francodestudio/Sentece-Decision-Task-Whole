@@ -126,7 +126,7 @@ var left_response;
 var right_response;
 var InstructionText;
 var StartKeyboard;
-var RSVPClock;
+var StimsClock;
 var StimuliText;
 var earlyMouseClick;
 var LeftResponseInstruction;
@@ -169,7 +169,7 @@ async function experimentInit() {
   
   You will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.
   
-  Each sentence will be presented to you one word at a time,followed by a fixation cross.
+  sentences will be presented you,followed by a fixation cross.
   
   For each sentence,you must indicate
   
@@ -201,8 +201,8 @@ async function experimentInit() {
   
   StartKeyboard = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
-  // Initialize components for Routine "RSVP"
-  RSVPClock = new util.Clock();
+  // Initialize components for Routine "Stims"
+  StimsClock = new util.Clock();
   StimuliText = new visual.TextStim({
     win: psychoJS.window,
     name: 'StimuliText',
@@ -591,9 +591,9 @@ function trialLoopLoopBegin(trialLoopLoopScheduler, snapshot) {
       snapshot = trialLoop.getSnapshot();
     
       trialLoopLoopScheduler.add(importConditions(snapshot));
-      trialLoopLoopScheduler.add(RSVPRoutineBegin(snapshot));
-      trialLoopLoopScheduler.add(RSVPRoutineEachFrame());
-      trialLoopLoopScheduler.add(RSVPRoutineEnd(snapshot));
+      trialLoopLoopScheduler.add(StimsRoutineBegin(snapshot));
+      trialLoopLoopScheduler.add(StimsRoutineEachFrame());
+      trialLoopLoopScheduler.add(StimsRoutineEnd(snapshot));
       trialLoopLoopScheduler.add(trialLoopLoopEndIteration(trialLoopLoopScheduler, snapshot));
     });
     
@@ -664,7 +664,7 @@ function blockLoopLoopEndIteration(scheduler, snapshot) {
 }
 
 
-var RSVPMaxDurationReached;
+var StimsMaxDurationReached;
 var gotValidClick;
 var early_clicked;
 var early_response_time;
@@ -674,21 +674,21 @@ var validClick;
 var valid_response_time;
 var valid_resp;
 var valid_mouse_response;
-var RSVPMaxDuration;
-var RSVPComponents;
-function RSVPRoutineBegin(snapshot) {
+var StimsMaxDuration;
+var StimsComponents;
+function StimsRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
-    //--- Prepare to start Routine 'RSVP' ---
+    //--- Prepare to start Routine 'Stims' ---
     t = 0;
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // keep track of whether this Routine was forcibly ended
     routineForceEnded = false;
-    RSVPClock.reset(routineTimer.getTime());
+    StimsClock.reset(routineTimer.getTime());
     routineTimer.add(4.500000);
-    RSVPMaxDurationReached = false;
+    StimsMaxDurationReached = false;
     // update component parameters for each repeat
     StimuliText.setText(Stimuli);
     // setup some python lists for storing info about the earlyMouseClick
@@ -710,18 +710,18 @@ function RSVPRoutineBegin(snapshot) {
     valid_resp = "";
     valid_mouse_response = "";
     
-    psychoJS.experiment.addData('RSVP.started', globalClock.getTime());
-    RSVPMaxDuration = null
+    psychoJS.experiment.addData('Stims.started', globalClock.getTime());
+    StimsMaxDuration = null
     // keep track of which components have finished
-    RSVPComponents = [];
-    RSVPComponents.push(StimuliText);
-    RSVPComponents.push(earlyMouseClick);
-    RSVPComponents.push(LeftResponseInstruction);
-    RSVPComponents.push(rightResponseInstruction);
-    RSVPComponents.push(validResponseMouseClick);
-    RSVPComponents.push(responsefixationCrossDisplay);
+    StimsComponents = [];
+    StimsComponents.push(StimuliText);
+    StimsComponents.push(earlyMouseClick);
+    StimsComponents.push(LeftResponseInstruction);
+    StimsComponents.push(rightResponseInstruction);
+    StimsComponents.push(validResponseMouseClick);
+    StimsComponents.push(responsefixationCrossDisplay);
     
-    RSVPComponents.forEach( function(thisComponent) {
+    StimsComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
        });
@@ -733,11 +733,11 @@ function RSVPRoutineBegin(snapshot) {
 var frameRemains;
 var buttons;
 var validButtons;
-function RSVPRoutineEachFrame() {
+function StimsRoutineEachFrame() {
   return async function () {
-    //--- Loop for each frame of Routine 'RSVP' ---
+    //--- Loop for each frame of Routine 'Stims' ---
     // get current time
-    t = RSVPClock.getTime();
+    t = StimsClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
@@ -868,7 +868,7 @@ function RSVPRoutineEachFrame() {
         validButtons = validResponseMouseClick.getPressed();
         if ((validButtons[0] || validButtons[2])) {
             validClick = true;
-            valid_response_time = (validResponseMouseClick.mouseClock.getTime() - 3.0);
+            valid_response_time = (validResponseMouseClick.mouseClock.getTime() - 1.5);
             if (validButtons[0]) {
                 valid_resp = left;
                 valid_mouse_response = "left";
@@ -894,7 +894,7 @@ function RSVPRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    RSVPComponents.forEach( function(thisComponent) {
+    StimsComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
       }
@@ -916,15 +916,15 @@ var corr;
 var validStr;
 var valid_corr_text;
 var valid_corr;
-function RSVPRoutineEnd(snapshot) {
+function StimsRoutineEnd(snapshot) {
   return async function () {
-    //--- Ending Routine 'RSVP' ---
-    RSVPComponents.forEach( function(thisComponent) {
+    //--- Ending Routine 'Stims' ---
+    StimsComponents.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
     });
-    psychoJS.experiment.addData('RSVP.stopped', globalClock.getTime());
+    psychoJS.experiment.addData('Stims.stopped', globalClock.getTime());
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeEarlyMouseClick
     correctStr = (correct_answer ? "True" : "False");
@@ -948,12 +948,13 @@ function RSVPRoutineEnd(snapshot) {
     trialLoop.addData("valid_accuracy", valid_corr);
     validResponseMouseClick.mouseClock.reset();
     responsefixationCrossDisplay.setColor("black");
+    console.log(valid_response_time);
     
     if (routineForceEnded) {
-        routineTimer.reset();} else if (RSVPMaxDurationReached) {
-        RSVPClock.add(RSVPMaxDuration);
+        routineTimer.reset();} else if (StimsMaxDurationReached) {
+        StimsClock.add(StimsMaxDuration);
     } else {
-        RSVPClock.add(4.500000);
+        StimsClock.add(4.500000);
     }
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
