@@ -336,7 +336,7 @@ async function experimentInit() {
       //create filename for result
       let now = new Date();
       let timestamp = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'_'+now.getHours()+'h'+  now.getMinutes() + 'm' + now.getSeconds() + 's';
-      let filename = timestamp +'_'+psychoJS._experiment._experimentName+'Whole'+'_'+ expInfo["tf_mapping"]+'_sub'+ expInfo["participant_id"]+'.csv'
+      let filename = timestamp +'_'+psychoJS._experiment._experimentName+'_'+ expInfo["tf_mapping"]+'_sub'+ expInfo["participant_id"]+'.csv'
     
       //extract result from experiment
       let dataObj = psychoJS._experiment._trialsData;
@@ -359,7 +359,7 @@ async function experimentInit() {
               },
               body: JSON.stringify({
                   experimentID: 'SnhAIILNiRDu',
-                  filename: 'whole_stim_presentation/' + filename,
+                  filename: filename,
                   data: data,
           }),
        }).then(response => response.json()).then(data => {
